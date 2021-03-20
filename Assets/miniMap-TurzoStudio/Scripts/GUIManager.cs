@@ -15,7 +15,7 @@ public class GUIManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void OnGUI() {
-
+		/*
 		Rect Map_Rectangle = new Rect(0.80f * Screen.width, 0.05f * Screen.height,
 			0.18f * Screen.width, 0.28f * Screen.height);
 
@@ -23,6 +23,6 @@ public class GUIManager : MonoBehaviour {
 
 			Graphics.DrawTexture (Map_Rectangle, MiniMapTexture, MiniMapMaterial);
 			
-		}
+		}*/
 }
 }

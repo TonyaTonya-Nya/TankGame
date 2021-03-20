@@ -9,9 +9,8 @@ public class ConGUI : MonoBehaviour {
 	private int arrayNo = 0;
 	
 	private GameObject nowEffectObj;
-	private string[] cameraState = {"Camera move" ,"Camera stop"};
-	private int cameraRotCon = 1;
-	
+
+
 	private float num = 0F;
 	private float numBck = 0F;
 	private Vector3 initPos;
@@ -38,25 +37,6 @@ public class ConGUI : MonoBehaviour {
 	}
 	
 	void  Update (){
-	
-		
-		if(num > numBck){
-			numBck = num;
-			tmpPos.y += 0.05f;
-			tmpPos.z -= 0.3f;
-		}else if(num < numBck){
-			numBck = num;
-			tmpPos.y -= 0.05f;
-			tmpPos.z += 0.3f;
-		}else if(num == 0){
-			tmpPos.y = initPos.y;
-			tmpPos.z = initPos.z;
-		}
-		
-		if(tmpPos.y < initPos.y )tmpPos.y = initPos.y;
-		if(tmpPos.z > initPos.z )tmpPos.z = initPos.z;
-
-		mainCamera.localPosition = tmpPos;
 	}
 	
 	void  OnGUI (){
@@ -64,38 +44,27 @@ public class ConGUI : MonoBehaviour {
 		if (GUI.Button ( new Rect(20, 0, 30, 30), "←")) {//return
 			arrayNo --;
 			if(arrayNo < 0)arrayNo = effectObj.Length -1;
-			effectOn();
+			//effectOn();
 			
 			haveProFlg = visibleBt();
 		}
 		
 		if (GUI.Button ( new Rect(50, 0, 200, 30), effectObj[ arrayNo ].name )) {
-			effectOn();
+			//effectOn();
 		}
 		
 		if (GUI.Button ( new Rect(250, 0, 30, 30), "→")) {//next
 			arrayNo ++;
 			if(arrayNo >= effectObj.Length)arrayNo = 0;
-			effectOn();
+			//effectOn();
 			
 			haveProFlg = visibleBt();
 		}
-		
-		if( haveProFlg ){
-			if (GUI.Button ( new Rect(50, 30, 300, 70), "+Distorsion" )) {
-				if(nowEffectObj != null)Destroy( nowEffectObj );
-				nowEffectObj = Instantiate( nonProFX );
-			}
-		}
-		
-		
-		num = GUI.VerticalSlider( new Rect(30, 100, 20, 200), num, 0, 20);
-		
-		
 	}
 	
-	void  effectOn (){
-		if(nowEffectObj != null)Destroy( nowEffectObj );
-		nowEffectObj = Instantiate(effectObj[ arrayNo ] );
+
+	public int nowBullet()
+    {
+		return arrayNo;
 	}
 }
